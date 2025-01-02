@@ -1,0 +1,30 @@
+{
+  "name": "ExactTempo",
+  "author": {
+    "name": "ExactTempo",
+    "email": "hello@exacttempo.com",
+    "url": "https://www.exacttempo.com"
+  },
+  "domainWhitelist": [ "api.exacttempo.com", "exacttempo-api.ngrok.io" ],
+  "parameters": [
+    {
+      "name": "shared_secret",
+      "type": "text",
+      "secure": true
+    }
+  ],
+  "defaultLocale": "en",
+  "private": false,
+  "signedUrls": true,
+  "location": {
+    "support": {
+      "ticket_sidebar": {
+        "url": "assets/iframe.html",
+        "flexible": true
+      }
+    }
+  },
+  "version": "1.0.0",
+  "frameworkVersion": "2.0",
+  "termsConditionsURL": "https://www.exacttempo.com/terms-of-service"
+}

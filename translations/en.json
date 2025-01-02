@@ -1,0 +1,8 @@
+{
+  "app": {
+    "name": "ExactTempo",
+    "short_description": "ExactTempo automates the ticket triage process in Zendesk, enabling faster, smarter, and more accurate customer support.",
+    "long_description": "ExactTempo automates the ticket triage process in Zendesk, enabling faster, smarter, and more accurate customer support. By leveraging AI to classify, prioritize, and route support tickets, ExactTempo eliminates the manual burden of updating critical ticket properties, helping your support team focus on high-impact work.\n\nWith ExactTempo, you’ll see improved response times, cleaner data, and better customer outcomes—all while reducing the time your team spends on repetitive tasks. Whether it’s categorizing tickets by urgency or analyzing customer sentiment, ExactTempo ensures that every ticket is handled consistently and efficiently.",
+    "installation_instructions": "Simply click install."
+  }
+}
