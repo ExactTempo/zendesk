@@ -3,12 +3,16 @@ footer {
     padding-top: 20px;
 }
 
-.data {
-    color: #363;
-    padding-left: 6px;
+h2 {
+    font-weight: bold;
+    font-size: 16px;
 }
 
-#content td {
-    font-size: 12px;
-    padding-top: 2px;
+p {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.answer {
+    margin-bottom: 18px;
 }

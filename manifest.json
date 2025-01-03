@@ -5,7 +5,6 @@
     "email": "hello@exacttempo.com",
     "url": "https://www.exacttempo.com"
   },
-  "domainWhitelist": [ "api.exacttempo.com", "exacttempo-api.ngrok.io" ],
   "parameters": [
     {
       "name": "shared_secret",

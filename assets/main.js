@@ -1,21 +1,18 @@
 (async function () {
     const client = ZAFClient.init();
-    const metadata = await client.metadata();
-    client.invoke('resize', { width: '100%', height: '120px' });
-    client.get('ticket.id').then(
+    const context = await client.context();
+    const subdomain = context.account.subdomain;
+    client.get("ticket.id").then(
         function(data) {
-            const ticketId = data['ticket.id'];
-            requestTicketAnswers(client, metadata, ticketId);
+            const ticketId = data["ticket.id"];
+            requestTicketAnswers(client, subdomain, ticketId);
         }
     );
 })();
 
 function showAnswers(answerResponse) {
-    const answer = answerResponse.results[0];
     const answerData = {
-        'field': answer.field,
-        'value': answer.value,
-        'justification': answer.justification
+        "answers": answerResponse.results
     };
 
     const source = document.getElementById("answers-template").innerHTML;
@@ -25,8 +22,8 @@ function showAnswers(answerResponse) {
 
 function showError(response) {
     const error_data = {
-        'status': response.status,
-        'statusText': response.statusText
+        "status": response.status,
+        "statusText": response.statusText
     };
 
     const source = document.getElementById("error-template").innerHTML;
@@ -34,20 +31,32 @@ function showError(response) {
     document.getElementById("content").innerHTML = template(error_data);
 }
 
-function requestTicketAnswers(client, metadata, ticketId) {
+function requestTicketAnswers(client, subdomain, ticketId) {
+    const domain = subdomain === "d3v-exacttempo" ? 
+        "exacttempo-api.ngrok.io" : "api.exacttempo.com";
     const settings = {
-        url: 'https://exacttempo-api.ngrok.io/zendesk/ui/ticket-field-answers',
-        type: 'POST',
+        url: `https://${domain}/zendesk/ui/${subdomain}/ticket-field-answers/${ticketId}`,
+        type: "GET",
         headers: {
-            'X-ZEN-EXACTTEMPO': typeof metadata.installationId === "string" ? 
-                metadata.settings.shared_secret : "{{setting.shared_secret}}"
+            Authorization: "Bearer {{jwt.token}}",
         },
-        secure: !(typeof metadata.installationId === "string"),
-        dataType: 'json',
+        jwt: {
+            algorithm: "HS256",
+            secret_key: "{{setting.shared_secret}}",
+            claims: {
+                ticketId: ticketId
+            }
+        },
+        secure: true,
+        dataType: "json",
     };
     
     client.request(settings).then(
         function(data) {
+            const answerCount = data.results.length;
+            let height = answerCount > 0 ? answerCount * 150 : 150;
+            height = height > 500 ? 500 : height;
+            client.invoke("resize", { width: "100%", height: `${height}px` });
             showAnswers(data);
         },
         function(response) {
