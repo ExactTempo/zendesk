@@ -29,15 +29,15 @@ zcli login -i
 
 Enter `d3v-exacttempo` as the subdomain. Enter your personal Zendesk API token when prompted.
 
-### Running the App
+### Running and Testing the App
 
-To  run the app locally, you can run the following command:
+It is possible to run the server locally using `zcli apps:server`, but `zcli` doesn't support replacing secure
+settings the same way the Zendesk proxy does. To get around this, we need to deploy the application as a private
+application in our development Zendesk account.
 
 ```bash
-zcli apps:server
+zcli apps:update
 ```
-
-With the server running, you can append `?zcli_apps=true` to the end of a Zendesk ticket's URL to see the app's UI.
 
 ## Notes
 
