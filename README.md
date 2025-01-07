@@ -39,8 +39,21 @@ application in our development Zendesk account.
 zcli apps:update
 ```
 
+## Deploying an Update
+
+Package and upload the application via the [Zendesk Portal](https://apps.zendesk.com/apps).
+
+```bash
+zcli apps:package
+```
+
+Then, upload the package to Zendesk.
+
 ## Notes
 
 * Logo
   * The framework will automatically use `logo-small.png` as the logo for the app. (128x128px)
   * The `logo.png` file is used in the marketplace listing. (320x320px)
+* Descriptions
+  * The `short_description` can only be 80 characters long
+  * The `long_description` can only be 3000 characters long
