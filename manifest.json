@@ -3,7 +3,7 @@
   "author": {
     "name": "ExactTempo",
     "email": "hello@exacttempo.com",
-    "url": "https://www.exacttempo.com"
+    "url": "https://www.exacttempo.com/ticket-classifier"
   },
   "domainWhitelist": [ "api.exacttempo.com", "exacttempo-api.ngrok.io" ],
   "parameters": [
