@@ -41,7 +41,8 @@ zcli apps:update
 
 ## Deploying an Update
 
-Package and upload the application via the [Zendesk Portal](https://apps.zendesk.com/apps).
+Package and upload the application via the [Zendesk Portal](https://apps.zendesk.com/apps). Run this in the root 
+of the project.
 
 ```bash
 zcli apps:package
